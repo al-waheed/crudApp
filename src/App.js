@@ -4,55 +4,51 @@ import AddCrud from './AddCrud'
 
 class App extends Component {
   state = {
-    cruds:[ 
-      {fullname: 'Pablo Excobar', occupation: 'Drug Lord', country: 'Columbia', isEditing:false},
-      {fullname: 'Rashidi Yekinni', occupation: 'Footballer', country: 'Nigeria',isEditing:false}
+    cruds: [
+      { fullname: 'Pablo Excobar', occupation: 'Drug Lord', country: 'Columbia', id: 1, isEditing: false },
+      { fullname: 'Rashidi Yekinni', occupation: 'Footballer', country: 'Nigeria', id: 2, isEditing: false }
     ]
-   };
+  };
 
-   editCrud = (i) => {
-    let cruds = this.state.cruds;
-    cruds[i].isEditing = true;
-    this.setState({
-      cruds: cruds
-    });
+  editCrud = (id) => {
+    const { cruds } = this.state;
+    let crud = cruds;
+    crud[id].isEditing = true;
+    this.setState({ cruds: crud });
   }
 
-  updateCrud = (i, fullname, occupation, country) => {
-    let cruds = this.state.cruds;
-    cruds[i].fullname = fullname;
-    cruds[i].occupation = occupation;
-    cruds[i].country= country;
-    cruds[i].isEditing = false;
-     this.setState({
-     cruds:cruds
-    });
+  updateCrud = (id, fullname, occupation, country) => {
+    let crud = this.state.cruds;
+    crud[id].fullname = fullname;
+    crud[id].occupation = occupation;
+    crud[id].country = country;
+    crud[id].isEditing = false;
+    this.setState({ cruds: crud });
   }
 
-deleteCrud = (i) =>{
- const cruds = this.state.cruds.filter((u,index)=> {
-   return index !== i
- })
- this.setState({
-   cruds : cruds
- })
-}
+  deleteCrud = (id) => {
+    const { cruds } = this.state;
+    const crud = cruds.filter(deletCrud => {
+      return deletCrud.id !== id
+    })
+    this.setState({ cruds: crud })
+  }
 
-addCrud = (newCrud) => {
- let cruds = [...this.state.cruds,newCrud];
- this.setState({
-   cruds: cruds
- })
+  addCrud = (newCrud) => {
+    const { cruds } = this.state;
+    let crud = [...cruds, newCrud];
+    this.setState({ cruds: crud })
+  }
 
-}
-
- render(){
-  return (
-    <div>
-      <Cruds deleteCrud={this.deleteCrud} updateCrud={this.updateCrud} editCrud={this.editCrud} allCruds={this.state.cruds}/>
-      <AddCrud addCrud={this.addCrud}/>
-    </div>
-   );
+  render() {
+    const { deleteCrud, updateCrud, editCrud, addCrud } = this;
+    const { cruds } = this.state;
+    return (
+      <div>
+        <AddCrud addCrud={addCrud} />
+        <Cruds deleteCrud={deleteCrud} updateCrud={updateCrud} editCrud={editCrud} cruds={cruds} />
+      </div>
+    );
   }
 }
 
