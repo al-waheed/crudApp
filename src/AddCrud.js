@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { ADD_CRUD } from './Action';
 class AddCrud extends Component {
   state = {
     fullname: "",
@@ -15,7 +16,7 @@ class AddCrud extends Component {
 
   handleSumbmit = (e) => {
     e.preventDefault();
-    this.props.addCrud(this.state)
+    this.props.onAddCrud(this.state)
     e.target.reset()
   }
   render() {
@@ -60,7 +61,11 @@ class AddCrud extends Component {
       </div>
     )
   }
-
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddCrud : (newCrud) => dispatch({type: ADD_CRUD, payload: newCrud})
+  }
 }
 
-export default AddCrud;
+export default connect(null, mapDispatchToProps) (AddCrud);
