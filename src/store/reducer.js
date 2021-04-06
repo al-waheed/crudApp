@@ -2,41 +2,49 @@ import { ADD_CRUD, EDIT_CRUD, UPDATE_CRUD, DELETE_CRUD } from '../Action'
 
 const initialState = {
 	cruds: [
-		{ fullname: 'Pablo Excobar', occupation: 'Drug Lord', country: 'Columbia', id: 1, isEditing: false },
-		{ fullname: 'Rashidi Yekinni', occupation: 'Footballer', country: 'Nigeria', id: 2, isEditing: false }
+		{ title: 'Your message title', message: 'what on your mind', id: 0, isEditing: false }
 	]
 }
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_CRUD:
 			let crud = [...state.cruds, action.payload]
+			console.log(crud,'?????')
 			return {
-				...state, 
+			 	...state,
 				cruds: crud,
 			}
 		case EDIT_CRUD:
 			let editCrud = state.cruds
-			editCrud[action.payload.id].isEditing = true;
-			console.log(editCrud)
+			editCrud[action.payload].isEditing = true;
 			return {
-				...state,  
-				cruds: editCrud,
+				...state,
+				cruds: [...editCrud]
 			}
 		case DELETE_CRUD:
 			let deletedCrud = state.cruds.filter(deletCrud => {
-				return deletCrud.id !== action.payload.id;
+				return deletCrud.id !== action.payload;
 			})
 			return {
 				...state,
-				cruds: deletedCrud,
+				cruds: deletedCrud
 			}
 		case UPDATE_CRUD:
+			const r = state.cruds.map((c,id) => {
+				console.log(id)
+				if (id === action.payload.id) {
+					c = action.payload;
+					c.isEditing = false;
+				}
+				return c
+			})
 			return {
 				...state,
-				// cruds:
+				cruds: r
 			}
+		default:
+			return state;
 	}
-	return state;
 }
 
 export default reducer;

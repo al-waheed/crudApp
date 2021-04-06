@@ -1,0 +1,38 @@
+header {
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  position: relative;
+  font-size: 43px;
+  color: var(--primary-color);
+  text-transform: capitalize;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+}
+
+header ul li {
+  list-style: none;
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin-left: 40px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header ul li:hover{
+  color: #333;
+  transform: skewY(-3deg);
+}

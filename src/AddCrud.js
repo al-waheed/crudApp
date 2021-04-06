@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ADD_CRUD } from './Action';
+import './AddCrud.css';
 class AddCrud extends Component {
   state = {
-    fullname: "",
-    occupation: "",
-    country: "",
+    title: " ",
+    message: " ",
   }
 
   handleChange = (e) => {
@@ -22,50 +22,39 @@ class AddCrud extends Component {
   render() {
     const { handleChange, handleSumbmit } = this;
     return (
-      <div className='form-container'>
-        <form onSubmit={handleSumbmit}>
-
-          <div className='input'>
-            <label>Fullname</label>
+    <div className='form'>
+      <div className='formcontainer'>
+        <form onSubmit={handleSumbmit} className='formbox'>
+           <div className='input'>
             <input type="text"
-              className='input'
-              id='fullname'
+              className='inputbox'
+              id='title'
               required
-              placeholder="Fullname"
+              placeholder="Note Title"
               onChange={handleChange} />
           </div>
 
           <div className='input'>
-            <label >Occupation</label>
-            <input type="text"
-              className='input'
-              id='occupation'
+            <textarea type='text'
+              className='inputtext'
+              id='message'
               required
-              placeholder="Occupation"
-              onChange={handleChange} />
-          </div>
-
-          <div className='input'>
-            <label>Country</label>
-            <input type="text"
-              className='input'
-              id='country'
-              required
-              placeholder="Country"
+              placeholder="What on your mind"
               onChange={handleChange} />
           </div>
           <div className='submit'>
-            <button className='btn'>Add User+</button>
+            <button className='btn'>Add Note+</button>
           </div>
         </form>
+        </div>
       </div>
     )
   }
 }
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    onAddCrud : (newCrud) => dispatch({type: ADD_CRUD, payload: newCrud})
+    onAddCrud: (newCrud) => dispatch({ type: ADD_CRUD, payload: newCrud })
   }
 }
 
-export default connect(null, mapDispatchToProps) (AddCrud);
+export default connect(null, mapDispatchToProps)(AddCrud);
