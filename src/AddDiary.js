@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import './styleCss/AddDairy.css';
 import { ADD_CRUD } from './reduxStore/Action';
+import {ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 
 class AddDiary extends Component {
   state = {
@@ -19,6 +20,7 @@ class AddDiary extends Component {
   handleSumbmit = (e) => {
     e.preventDefault();
     this.props.onAddCrud(this.state)
+    ToastsStore.info("Added, Successfully!") 
     e.target.reset()
   }
   render() {
@@ -46,7 +48,8 @@ class AddDiary extends Component {
               onChange={handleChange} />
           </div>
           <button className='btn'>Addnote</button>
-        </form>
+          <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_RIGHT}/>
+           </form>
         </div>
       </div>
     )

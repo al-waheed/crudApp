@@ -18,7 +18,7 @@ function MainPage() {
 						<Link to='/learnmore' className='learnbtn'>Learn More</Link>
 					</div>
 					<div className='imgbox'>
-						<img src='/img/keji.jpg' className='writeup' alt='pic' />
+						<img src='/img/Bg.png' className='writeup' alt='pic' />
 					</div>
 				</div>
 			</section>

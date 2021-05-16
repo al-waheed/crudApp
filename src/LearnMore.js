@@ -19,7 +19,7 @@ function LearnMore() {
 					<li>Your username and password.</li>
 				</ul>
 				<div className='imgbox'>
-					<img src='/img/keji.jpg' className='writeup' alt='pic' />
+					<img src='/img/Bg2.png' className='bg2pic' alt='pic' />
 				</div>
 			</div>
 		</div>
