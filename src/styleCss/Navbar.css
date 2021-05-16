@@ -1,9 +1,10 @@
 header {
-  width: 100%;
+  width: 100%; 
   padding: 20px 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 }
 
 header .logo {
@@ -24,15 +25,22 @@ header ul li {
   list-style: none;
   display: inline-block;
   color: var(--primary-color);
-  font-weight: 400;
-  font-size: 18px;
+  font-weight: 100;
+  padding: 10px;
+  font-size: 15px;
   letter-spacing: 1px;
-  margin-left: 40px;
+  margin: 0 10px;
   text-decoration: none;
   cursor: pointer;
 }
 
-header ul li:hover{
-  color: #333;
-  transform: skewY(-3deg);
+header ul li:hover {
+  border-bottom: 2px solid var(--primary-color);
 }
+
+
+
+
+
+
+

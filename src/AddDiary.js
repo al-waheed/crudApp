@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ADD_CRUD } from './Action';
-import './AddCrud.css';
-class AddCrud extends Component {
+
+import './styleCss/AddDairy.css';
+import { ADD_CRUD } from './reduxStore/Action';
+
+class AddDiary extends Component {
   state = {
     title: " ",
-    message: " ",
+    entries: " ",
   }
 
   handleChange = (e) => {
@@ -22,29 +24,28 @@ class AddCrud extends Component {
   render() {
     const { handleChange, handleSumbmit } = this;
     return (
-    <div className='form'>
-      <div className='formcontainer'>
-        <form onSubmit={handleSumbmit} className='formbox'>
+    <div className='formcontainer'>
+      <div className='container'>
+        <form onSubmit={handleSumbmit} className='formbox card'>
+        <h3>create new note</h3>
            <div className='input'>
             <input type="text"
               className='inputbox'
               id='title'
               required
-              placeholder="Note Title"
+              placeholder="Note title"
               onChange={handleChange} />
           </div>
 
           <div className='input'>
-            <textarea type='text'
+            <input type='text'
               className='inputtext'
-              id='message'
+              id='entries'
               required
               placeholder="What on your mind"
               onChange={handleChange} />
           </div>
-          <div className='submit'>
-            <button className='btn'>Add Note+</button>
-          </div>
+          <button className='btn'>Addnote</button>
         </form>
         </div>
       </div>
@@ -56,5 +57,4 @@ const mapDispatchToProps = dispatch => {
     onAddCrud: (newCrud) => dispatch({ type: ADD_CRUD, payload: newCrud })
   }
 }
-
-export default connect(null, mapDispatchToProps)(AddCrud);
+export default connect(null, mapDispatchToProps)(AddDiary);

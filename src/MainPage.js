@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import './MainPage.css'
+import { Link } from 'react-router-dom';
+
+import './styleCss/MainPage.css';
 
 function MainPage() {
 	return (
@@ -9,14 +10,12 @@ function MainPage() {
 				<div className='circle'></div>
 				<div className='content'>
 					<div className='textbox'>
-						<h2>It's not just a Diary<br />It's <span>note-it.</span></h2>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-						deleniti assumenda, quia soluta modi eius, quaerat ea ipsa placeat rerum
-						debitis corrupti harum cupiditate officia molestias dolorum? Non, odio
-						quasi? hic tempora ipsam. Adipisci eligendi magni impedit, consectetur 
-						quidem accusamus.
-				         </p>
-						<Link to='/aboutus' className='learnbtn'>Learn More</Link>
+						<h2>It's not just a Diary<br />It's <span>noteis.</span></h2>
+						<p>Noteis is an online diary where we writes about what we have seen,
+						heard or what we have been doing. Note-it diaries are usually typewritten.
+						We all like to keep diaries for a variety of reasons, we may want to keep a
+						record for ourselves about what we are doing or have done during the day.</p>
+						<Link to='/learnmore' className='learnbtn'>Learn More</Link>
 					</div>
 					<div className='imgbox'>
 						<img src='/img/keji.jpg' className='writeup' alt='pic' />

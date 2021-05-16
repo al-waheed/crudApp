@@ -1,17 +1,18 @@
-import { ADD_CRUD, EDIT_CRUD, UPDATE_CRUD, DELETE_CRUD } from '../Action'
+import { ADD_CRUD, EDIT_CRUD, UPDATE_CRUD, DELETE_CRUD } from '../reduxStore/Action';
 
 const initialState = {
 	cruds: [
-		{ title: 'Your message title', message: 'what on your mind', id: 0, isEditing: false }
+		{ title: 'Your message title', entries: 'what on your mind', id: 0, date: Date.now(), isEditing: false }
 	]
 }
 const reducer = (state = initialState, action) => {
+
 	switch (action.type) {
 		case ADD_CRUD:
 			let crud = [...state.cruds, action.payload]
-			console.log(crud,'?????')
+			console.log(crud, '?????')
 			return {
-			 	...state,
+				...state,
 				cruds: crud,
 			}
 		case EDIT_CRUD:
@@ -30,7 +31,7 @@ const reducer = (state = initialState, action) => {
 				cruds: deletedCrud
 			}
 		case UPDATE_CRUD:
-			const r = state.cruds.map((c,id) => {
+			const r = state.cruds.map((c, id) => {
 				console.log(id)
 				if (id === action.payload.id) {
 					c = action.payload;
@@ -38,13 +39,11 @@ const reducer = (state = initialState, action) => {
 				}
 				return c
 			})
-			return {
-				...state,
-				cruds: r
-			}
+			return { ...state, cruds: r }
 		default:
 			return state;
 	}
+
 }
 
 export default reducer;
